@@ -4,15 +4,13 @@ This document contains all the commands demonstrated in the corresponding YouTub
 
 **Watch the video here:** `[Link to the video here]`
 
-**A quick note on compatibility**: The commands in this script are shown as executed on macOS. While most fcli commands are cross-platform, shell syntax—especially for setting environment variables (e.g., export) and handling quotes ('single quotes' vs. "double quotes")—can differ on other operating systems like Windows. You may need to make minor adjustments for the commands to work in your specific shell (like Command Prompt or PowerShell).
+**A quick note on compatibility:** The commands in this script are shown as executed on macOS. While most `fcli` commands are cross-platform, shell syntax—especially for setting environment variables (e.g., `export`) and handling quotes (`'single quotes'` vs. `"double quotes"`)—can differ on other operating systems like Windows. You may need to make minor adjustments for the commands to work in your specific shell (like Command Prompt or PowerShell).
 
 -----
 
 ### Setting Environment Variables
 
 To simplify the reuse of values like the SSC URL or passwords, you can set environment variables. `fcli` automatically recognizes these and uses them as default values for the corresponding command options.
-
-**Note:** The `export` command is for Linux/macOS (bash/zsh). The syntax for Windows may differ (`set` or `$env:` in PowerShell).
 
 ```bash
 # Sets the default URL for connecting to the Software Security Center (SSC)
@@ -34,12 +32,26 @@ echo $FCLI_DEFAULT_SSC_URL
 
 #### Login with User Credentials
 
-The most straightforward way to log in is by using a username and password. Thanks to the environment variables we set earlier, we don't need to specify the URL and password again.
+The most straightforward way to log in is by using a username and password. The command below assumes you have set the environment variables as shown above.
 
 ```bash
 # Establishes a session to SSC, providing only the username
 # The URL, password, and Client Auth Token are sourced from the environment variables
 fcli ssc session login -u jwienand
+```
+
+Alternatively, if you are not using environment variables, you must provide the URL, password, and any other necessary tokens directly on the command line.
+
+For an SSC-only session:
+
+```bash
+fcli ssc session login --url https://your-ssc.com -u jwienand -p 'testpassword'
+```
+
+To establish a combined session for SSC and ScanCentral SAST, add the Client Authentication Token with the `-c` flag:
+
+```bash
+fcli ssc session login --url https://your-ssc.com -u jwienand -p 'testpassword' -c 'testclientauthtoken'
 ```
 
 #### Login with a Token (Best Practice for CI/CD)
