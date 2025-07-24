@@ -16,7 +16,7 @@ To simplify the reuse of values like the SSC URL or passwords, you can set envir
 
 ```bash
 # Sets the default URL for connecting to the Software Security Center (SSC)
-export FCLI_DEFAULT_SSC_URL='https://ssc.uat.cyberresstage.com'
+export FCLI_DEFAULT_SSC_URL='https://your-ssc.com'
 
 # Sets additional variables for the password and client authentication token
 export FCLI_DEFAULT_SSC_PASSWORD='your-password-here'
