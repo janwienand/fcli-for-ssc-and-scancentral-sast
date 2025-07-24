@@ -4,6 +4,8 @@ This document contains all the commands demonstrated in the corresponding YouTub
 
 **Watch the video here:** `[Link to the video here]`
 
+**A quick note on compatibility**: The commands in this script are shown as executed on macOS. While most fcli commands are cross-platform, shell syntax—especially for setting environment variables (e.g., export) and handling quotes ('single quotes' vs. "double quotes")—can differ on other operating systems like Windows. You may need to make minor adjustments for the commands to work in your specific shell (like Command Prompt or PowerShell).
+
 -----
 
 ### Setting Environment Variables
